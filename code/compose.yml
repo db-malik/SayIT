@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_OPTIONS=
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./frontend
+          target: ./frontend
+          ignore:
+            - node_modules/
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - '5000:5000'
+    develop:
+      watch:
+        - action: sync+restart
+          path: ./backend
+          target: ./backend
+          ignore:
+            - __pycache__/
+

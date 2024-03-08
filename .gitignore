@@ -1,0 +1,42 @@
+# .gitignore
+
+# Compiled files
+node_modules/
+__pycache__/
+
+
+# Logs and databases
+*.log
+*.sqlite
+
+# Environment variables
+.env
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Dependency directories
+lib/
+libs/
+
+# Editor-specific files
+.vscode/
+.idea/
+.conda/
+
+# Compiled Python files
+*.pyc
+
+# Mac OS
+.DS_Store
+
+# Environment configuration
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Docker
+docker-compose.override.yml
