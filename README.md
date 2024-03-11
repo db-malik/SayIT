@@ -97,6 +97,8 @@ Describe how to install and set up the project.
 
 ## Usage
 
+- docker --log-level=debug --tls compose up
+
 Provide instructions on how to use the project.
 
 ## Contributing

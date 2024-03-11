@@ -11,11 +11,17 @@ WORKDIR /backend
 COPY requirements.txt /backend/requirements.txt
 RUN pip install --no-cache-dir -r /backend/requirements.txt
 
+# Install additional dependencies
+RUN pip install fastapi[all] uvicorn watchdog python-dotenv
+
 # Copy the current directory contents into the container at /backend
 COPY . /backend
 
 # Ensure that files are owned by the configured user
 RUN chown -R app:app /backend
+
+# Set environment variable for folder path
+ENV FOLDER_PATH=/backend
 
 # Switch to the non-privileged user
 USER app
@@ -24,4 +30,8 @@ USER app
 EXPOSE 5000
 
 # Run server.py when the container launches
-CMD ["python", "server.py"]
+CMD ["watchmedo", "auto-restart", "--recursive", "--pattern=*.py", "--", "uvicorn", "server:app", "--host", "0.0.0.0", "--port", "5000"]
+
+# CMD ["python", "server.py"]
+# CMD ["watchmedo auto-restart --recursive --pattern='*.py' --directory='.' python server.py"]
+

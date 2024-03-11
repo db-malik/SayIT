@@ -40,3 +40,9 @@ libs/
 
 # Docker
 docker-compose.override.yml
+
+
+# Video files
+*.mp4
+*.avi
+*.mkv

@@ -21,6 +21,8 @@ services:
       context: ./backend
     ports:
       - '5000:5000'
+    environment:
+      - BACKEND_FOLDER_PATH=/backend
     develop:
       watch:
         - action: sync+restart

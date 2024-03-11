@@ -27,11 +27,11 @@ def transcribe_video(video_path):
     return "S'il vous plaît, aidez-moi à résumer le paragraphe suivant: " + text
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-video_dir = os.path.join(current_dir, 'video')
+video_dir = os.path.join(current_dir,  'video')
 video_files = [file for file in os.listdir(video_dir) if file.endswith('.mp4')]
 
 def summarize_text_with_chatgpt(text):
-    response = openai.completions.create(
+    response = openai.Completions.create(
         model="gpt-3.5-turbo-instruct",
         prompt=text,
         temperature=0.6,
@@ -45,7 +45,7 @@ def save_summary_as_word(summary, filename):
     doc.add_paragraph(summary)
     doc.save(filename)
 
-def main():
+def transcript_video():
     file_type='docx'
     if len(video_files) > 0:
         video_path = os.path.join(video_dir, video_files[0])
@@ -57,8 +57,9 @@ def main():
         timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
         text_filename = os.path.basename(video_path).replace('.mp4', f'_{timestamp}.{file_type}')
         save_summary_as_word(summary, os.path.join(text_dir, text_filename))
+        return text
     else:
-        print("No mp4 files found in the current directory.")
+        return("No mp4 files found in the current directory.")
 
 
 
