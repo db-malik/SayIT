@@ -18,39 +18,33 @@ Brief description of the project.
 
 ## Architecture
 
-SayIt
-|
-|-- Documentation
-|   |-- RapportsRéunions
-|   |   |-- CompteRendu_LancementProjet.md
-|   |   |-- CompteRendu_AvancementProjet.md
-|   |   |-- CompteRendu_EvolutionProjet.md
-|   |   `-- ...
-|   |-- CahierDeCharge.md
-|   `-- ...
-|
-|-- Code
-|   |-- Frontend
-|   |   |-- src
-|   |   |   |-- main.js
-|   |   |   `-- ...
-|   |   `-- ...
-|   |
-|   |-- Backend
-|   |   |-- src
-|   |   |   |-- app.py
-|   |   |   |-- Scripts
-|   |   |   `-- ...
-|   |   `-- ...
-|   `-- ...
-|
-|-- Ressources
-|   |-- Maquettes
-|   |-- ModèlesML
-|   `-- ...
-|
-`-- README.md
-
+- SayIt
+  - Documentation
+    - RapportsRéunions
+      - CompteRendu_LancementProjet.md
+      - CompteRendu_AvancementProjet.md
+      - CompteRendu_EvolutionProjet.md
+      - ...
+    - CahierDeCharge.md
+    - ...
+  - Code
+    - Frontend
+      - src
+        - main.js
+        - ...
+      - ...
+    - Backend
+      - src
+        - app.py
+        - Scripts
+        - ...
+      - ...
+    - ...
+  - Ressources
+    - Maquettes
+    - ModèlesML
+    - ...
+  - README.md
 
 ## Documentation
 
