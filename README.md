@@ -19,36 +19,31 @@ Brief description of the project.
 ## Architecture
 
 📁 SayIt
-│
 ├── 📁 Documentation
-│   ├── 📄 RapportsRéunions
-│   │   ├── 📄 CompteRendu_LancementProjet.md
-│   │   ├── 📄 CompteRendu_AvancementProjet.md
-│   │   ├── 📄 CompteRendu_EvolutionProjet.md
-│   │   └── ...
-│   ├── 📄 CahierDeCharge.md
-│   └── ...
-│
+│ ├── 📄 RapportsRéunions
+│ │ ├── 📄 CompteRendu_LancementProjet.md
+│ │ ├── 📄 CompteRendu_AvancementProjet.md
+│ │ ├── 📄 CompteRendu_EvolutionProjet.md
+│ │ └── ...
+│ ├── 📄 CahierDeCharge.md
+│ └── ...
 ├── 📁 Code
-│   ├── 📁 Frontend
-│   │   ├── 📁 src
-│   │   │   ├── 📄 main.js
-│   │   │   └── ...
-│   │   └── ...
-│   │
-│   ├── 📁 Backend
-│   │   ├── 📁 src
-│   │   │   ├── 📄 app.py
-│   │   │   ├── 📁 Scripts
-│   │   │   └── ...
-│   │   └── ...
-│   └── ...
-│
+│ ├── 📁 Frontend
+│ │ ├── 📁 src
+│ │ │ ├── 📄 main.js
+│ │ │ └── ...
+│ │ └── ...
+│ ├── 📁 Backend
+│ │ ├── 📁 src
+│ │ │ ├── 📄 app.py
+│ │ │ ├── 📁 Scripts
+│ │ │ └── ...
+│ │ └── ...
+│ └── ...
 ├── 📁 Ressources
-│   ├── 📁 Maquettes
-│   ├── 📁 ModèlesML
-│   └── ...
-│
+│ ├── 📁 Maquettes
+│ ├── 📁 ModèlesML
+│ └── ...
 ├── 📄 README.md
 └── ...
 
@@ -67,7 +62,7 @@ This folder contains meeting reports, the project charter, and other relevant do
 
 ## Code
 
-The main source code of the project is organized into different folders.
+The main source code of the project is organized into different folders frontend and backend.
 
 - **Frontend:**
   - [src](CodeSource/Frontend/src)
