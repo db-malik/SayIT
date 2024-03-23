@@ -1,24 +1,23 @@
-import React,{memo} from "react";
+import React, { memo } from 'react'
 
-import { Header, TldWrite, SpeechToText , TranscriptSummariser, Blog } from "../../common/homePage";
-import { Navbar } from "../../ui";
+import { Header, TldWrite, SpeechToText, TranscriptSummariser } from '../../common/homePage'
+import { Navbar } from '../../ui'
 
-import './homePage.css';
+import './homePage.css'
 
-const HomePage=()=>{
-
+const HomePage = () => {
   return (
     <div id="hp01Homepage">
       <div className="gradientBackground">
-        <Navbar/>
-        <Header/>
+        <Navbar />
+        <Header />
       </div>
-      <TldWrite/>
-      <TranscriptSummariser/>
+      <TldWrite />
+      <TranscriptSummariser />
       <SpeechToText />
-      <Blog/>
+      {/* <Blog /> */}
     </div>
-   )
+  )
 }
 
-export default memo(HomePage);
+export default memo(HomePage)

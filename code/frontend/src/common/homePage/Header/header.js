@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 
-import ai from '../../../utils/assets/ai.png';
+import ai from '../../../assets/ai.png';
 
 import './header.css';
 

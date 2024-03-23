@@ -17,11 +17,14 @@ pydantic
 # database requirement
 SQLAlchemy
 mysql-connector-python
+aiomysql
 
-
+# system requirement
 python-dotenv
 
-
+# routes requirement
+bcrypt
+PyJWT
 
 # Werkzeug==2.0.3
 
