@@ -2,8 +2,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from database.db_config import get_db
-from controllers.user_controller import get_all_users
+from database.db_config import get_database_connection
+from controllers.user_controller import get_users
 from models.user_model import User
 
 from scripts.video_transcription.transcription_module import transcript_video
@@ -12,9 +12,9 @@ from scripts.video_transcription.transcription_module import transcript_video
 model_ml_router = APIRouter()
 
 @model_ml_router.get("/")
-async def get_all_users_endpoint(db: Session = Depends(get_db)):
+async def get_all_users_endpoint():
     try:
-        users = get_all_users(db)
+        users = get_users()
         return users
     except Exception as e:
         print(f"Validation error in get_all_users_endpoint: {e}")

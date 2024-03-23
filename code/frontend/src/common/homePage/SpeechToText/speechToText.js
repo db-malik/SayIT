@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import { useHistory } from "react-router-dom";
 
-import mlvoice from '../../../utils/assets/mlvoice.png';
+import mlvoice from '../../../assets/mlvoice.png';
 
 import './speechToText.css';
 

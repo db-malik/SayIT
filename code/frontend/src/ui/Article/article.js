@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Article = ({ imgUrl, title, id, textContent }) => {
   const history = useHistory();
-  console.log(id);
 
   const readFullArticle = () => {
     history.push(`/${id}`);

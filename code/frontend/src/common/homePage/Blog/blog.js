@@ -54,24 +54,28 @@ const blogLinks = [
   {
     title: 'Speech Recognition',
     imgUrl: blog02,
+    id: '2',
     link: 'https://jonathan-hui.medium.com/speech-recognition-deep-speech-ctc-listen-attend-and-spell-d05e940e9ed1',
     text: 'Deep Learning (DL) changes many Machine Learning (ML) fields that heavily depend on domain knowledge. Decades of research in modeling this domain knowledge can be replaced with DL models with higher accuracy and less manual labor. In this article, we will...',
   },
   {
     title: 'Text Summarisation Using Deep Learning',
     imgUrl: blog03,
+    id: '3',
     link: 'https://medium.com/@blogsupport/link-summarization-using-deep-learning-techniques-fb9fb628881d',
     text: 'The amount of data produced every day is mind-boggling. To put things in perspective, in the last two years alone 90% of the world’s data is generated. Every minute, more than 120 professionals join LinkedIn, and the favourite search engine of the world processes 40,000 searches every minute...',
   },
   {
     title: 'Speech to Text Conversion',
     imgUrl: blog04,
+    id: '4',
     link: 'https://towardsdatascience.com/easy-speech-to-link-with-python-3df0d973b426',
     text: 'Speech is the most common means of communication and the majority of the population in the world relies on speech to communicate with one another. Speech recognition system...',
   },
   {
     title: 'Coding In Deep Learning',
     imgUrl: blog05,
+    id: '5',
     link: 'https://towardsdatascience.com/coding-deep-learning-for-beginners-start-a84da8cb5044',
     text: 'Intuition based series of articles about Neural Networks dedicated to programmers who want to understand basic math behind the code and non-programmers who want to know how to turn math into code...',
   },
@@ -90,8 +94,8 @@ const Blog = () => {
         <Article imgUrl={blog01} title={blogs[0].title} link={blogs[0].link} id={blogs[0].id} textContent={blogs[0].text} />
       </div>
       <div className="bg11BlogContainerGroupB">
-        {blogLinks.map((item, index) => (
-          <>{index ? <Article imgUrl={item.imgUrl} title={item.title} link={item.link} key={item.title + index} id={item.id} textContent={item.text} /> : null}</>
+        {blogLinks.map((item) => (
+          <>{ <Article imgUrl={item.imgUrl} title={item.title} link={item.link} key={item.id} id={item.id} textContent={item.text} /> }</>
         ))}
       </div>
     </div>
