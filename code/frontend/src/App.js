@@ -1,30 +1,40 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React from 'react'
+// import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import './styles/app.css';
-import ArticlePage from "./views/articlePage";
-import HomePage from "./views/homePage";
-import SignInPage from "views/SignInPage";
-import MeetingSummariser from "./views/MeetingSummariser";
-import TranscriptSummariser from "./views/TranscriptSummariser";
-import SpeechToText from "./views/SpeechToText";
-import Page404 from "./views/Page404";
+import './styles/app.css'
+import ArticlePage from './views/articlePage/ArticlePage'
+import HomePage from './views/homePage/HomePage'
+import SignInPage from 'views/signInPage/SignInPage'
+import MeetingSummariser from './views/meetingSummariser/MeetingSummariser'
+import TranscriptSummariser from './views/transcriptSummariser/TranscriptSummariser'
+import SpeechToText from './views/speechToText/SpeechToText'
+import Page404 from './views/page404/Page404'
+import ProfilePage from 'views/profilePage/ProfilePage'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import GridFonctionalities from "components/profile/GridFonctionalities"
+import TextSammury from "components/profile/fonctionalities/TextSammury"
+import ChatWithAI from "components/profile/fonctionalities/ChatWithAI"
+import Chatbot from "components/profile/fonctionalities/chat/Chatbot/Chatbot"
 
 const App = () => {
-
   return (
-    <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/signin" component={SignInPage} />
-          <Route exact path="/MeetingSummariser" component={MeetingSummariser} />
-          <Route exact path="/TranscriptSummariser" component={TranscriptSummariser} />
-          <Route exact path="/SpeechToText" component={SpeechToText} />
-          <Route exact path="/:id" component={ArticlePage} />
-          <Route exact path="/*" component={Page404} />                         
-        </Switch>
-    </BrowserRouter >
-  );
-};
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/profile" element={<ProfilePage />}>
+          <Route exact path="/profile/fonctionalities" element={<GridFonctionalities />} />
+          <Route path="/profile/text_sammury" element={<TextSammury />} />
+          <Route path="/profile/chat_with_ai" element={<Chatbot />} />
+        </Route>
+        <Route path="/MeetingSummariser" element={<MeetingSummariser />} />
+        <Route path="/TranscriptSummariser" element={<TranscriptSummariser />} />
+        <Route path="/SpeechToText" element={<SpeechToText />} />
+        <Route path="/:id" element={<ArticlePage />} />
+        <Route path="*" element={<Page404 />} />
+      </Routes>
+    </Router>
+  )
+}
 
-export default App;
+export default App
