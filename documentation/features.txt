@@ -1,0 +1,9 @@
+Azure AI service for Language :
+
+    Sentiment analysis
+    Key phrase extraction
+    Pre-built question answering
+    Conversational language understanding
+    Named entity recognition
+    Text Summarization
+    Text analytics for Health

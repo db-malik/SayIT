@@ -7,47 +7,27 @@ from controllers.user_controller import get_users
 from models.user_model import User
 
 from scripts.video_transcription.transcription_module import transcript_video
+from samples.sample_extract_summary import sample_extractive_summarization
 
 
 model_ml_router = APIRouter()
 
-@model_ml_router.get("/")
-async def get_all_users_endpoint():
+@model_ml_router.post("/textsummarisation")
+async def text_summarisation(text: str):
     try:
-        users = get_users()
-        return users
-    except Exception as e:
-        print(f"Validation error in get_all_users_endpoint: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
-      
-      
-@model_ml_router.get("/textsummarisation")
-async def text_summarisation():
-    try:
-        print("script activated")
-        result = transcript_video()
-        return {"result": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-      
-      
-@model_ml_router.get("/audiotranscription")
-async def audio_transcription():
-    try:
-      # add functions logic to transcribe audio
+        data = [text]
 
-        result = "test audio transcription"
-        return {"result": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-      
-      
-@model_ml_router.get("/videoTranscription")
-async def audio_transcription():
-    try:
-      # add functions logic to transcribe video
+        print(data)
+        print("****************************************************************")
 
-        result = "test video transcription"
-        return {"result": result}
+        # Call the summarization function with the array of sentences
+        summary_text = sample_extractive_summarization(data)
+
+        # Print the summary text for debugging
+        print(summary_text)
+
+        return {"result": summary_text}
     except Exception as e:
+        # If an error occurs, raise an HTTPException
         raise HTTPException(status_code=500, detail=str(e))
+
