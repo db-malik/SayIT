@@ -1,29 +1,57 @@
-import * as React from 'react';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import Textarea from '@mui/joy/Textarea';
-import IconButton from '@mui/joy/IconButton';
-import Menu from '@mui/joy/Menu';
-import MenuItem from '@mui/joy/MenuItem';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import FormatBold from '@mui/icons-material/FormatBold';
-import FormatItalic from '@mui/icons-material/FormatItalic';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
-import Check from '@mui/icons-material/Check';
+import React, { useState } from 'react'
+import Box from '@mui/joy/Box'
+import Button from '@mui/joy/Button'
+import FormControl from '@mui/joy/FormControl'
+import FormLabel from '@mui/joy/FormLabel'
+import Textarea from '@mui/joy/Textarea'
+import IconButton from '@mui/joy/IconButton'
+import Menu from '@mui/joy/Menu'
+import MenuItem from '@mui/joy/MenuItem'
+import ListItemDecorator from '@mui/joy/ListItemDecorator'
+import FormatBold from '@mui/icons-material/FormatBold'
+import FormatItalic from '@mui/icons-material/FormatItalic'
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
+import Check from '@mui/icons-material/Check'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchTextSummary } from 'sevices/services'
 
-  const TextArea = () => {
-  const [italic, setItalic] = React.useState(false);
-  const [fontWeight, setFontWeight] = React.useState('normal');
-  const [anchorEl, setAnchorEl] = React.useState(null);
+const TextArea = ({action}) => {
+  const [italic, setItalic] = useState(false)
+  const [fontWeight, setFontWeight] = useState('normal')
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [textData, setTextData] = useState('')
+  const loading = useSelector((state) => state.loading)
+  const dispatch = useDispatch()
+
+  const sendText = (action) => {
+    switch (action) {
+      case 'summarize':
+        dispatch(fetchTextSummary(textData))
+        break
+      case 'translate':
+        // Add your code here
+        break
+      default:
+    }
+  }
+
   return (
     <FormControl>
       <FormLabel>Your comment</FormLabel>
       <Textarea
+        sx={{
+          overflowY: 'auto', // Activate vertical scrolling if content overflows vertically
+          scrollbarColor: 'var(--scrollbar-thumb) var(--scrollbar-track)',
+          bgcolor: '#feffffeb',
+          minWidth: 600,
+          fontWeight,
+          fontStyle: italic ? 'italic' : 'initial',
+        }}
+        onChange={(event) => setTextData(event.target.value)}
         color="blue"
         placeholder="Type something here…"
         minRows={18.2}
+        maxRows={18.2}
         endDecorator={
           <Box
             sx={{
@@ -36,11 +64,7 @@ import Check from '@mui/icons-material/Check';
               flex: 'auto',
             }}
           >
-            <IconButton
-              variant="plain"
-              color="neutral"
-              onClick={(event) => setAnchorEl(event.currentTarget)}
-            >
+            <IconButton variant="plain" color="neutral" onClick={(event) => setAnchorEl(event.currentTarget)}>
               <FormatBold />
               <KeyboardArrowDown fontSize="md" />
             </IconButton>
@@ -57,14 +81,12 @@ import Check from '@mui/icons-material/Check';
                   key={weight}
                   selected={fontWeight === weight}
                   onClick={() => {
-                    setFontWeight(weight);
-                    setAnchorEl(null);
+                    setFontWeight(weight)
+                    setAnchorEl(null)
                   }}
                   sx={{ fontWeight: weight }}
                 >
-                  <ListItemDecorator>
-                    {fontWeight === weight && <Check fontSize="sm" />}
-                  </ListItemDecorator>
+                  <ListItemDecorator>{fontWeight === weight && <Check fontSize="sm" />}</ListItemDecorator>
                   {weight === '200' ? 'lighter' : weight}
                 </MenuItem>
               ))}
@@ -77,19 +99,14 @@ import Check from '@mui/icons-material/Check';
             >
               <FormatItalic />
             </IconButton>
-            <Button sx={{ ml: 'auto' }}>Send</Button>
+            <Button disabled={loading} onClick={()=>sendText(action)} sx={{ ml: 'auto' }}>
+              Send
+            </Button>
           </Box>
         }
-        sx={{
-          bgcolor: '#feffffeb',
-          minWidth: 600,
-          fontWeight,
-          fontStyle: italic ? 'italic' : 'initial',
-        }}
       />
     </FormControl>
-  );
+  )
 }
-
 
 export default TextArea

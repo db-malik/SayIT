@@ -1,58 +1,33 @@
-import * as React from 'react';
-import Card from '@mui/joy/Card';
-import Typography from '@mui/joy/Typography';
+import React from 'react'
+import Card from '@mui/joy/Card'
+import Typography from '@mui/joy/Typography'
+import Loading from 'components/loading/Loading'
 
-const TypographyCard = () => {
+const TypographyCard = ({title, text, load, err}) => {
+
+
   return (
     <Card
       variant="outlined"
       sx={{
         bgcolor: '#feffffeb',
         maxHeight: '500px',
-        minHeight: '400px',
-        overflowY: 'auto', 
+        minHeight: '500px',
+        overflowY: 'auto',
         scrollbarColor: 'var(--scrollbar-thumb) var(--scrollbar-track)',
         mt: '20px',
       }}
     >
-      <div style={{ padding: '16px' }}> {/* Add padding for better readability */}
-        <Typography level="h1">National Parks</Typography>
-        <Typography level="h2" fontSize="xl" sx={{ mb: 0.5 }}>
-          Yosemite National Park
+      <div style={{ padding: '10px' }}>
+        {' '}
+        {/* Add padding for better readability */}
+        <Typography sx={{ mb: 4 }} level="h2">
+        {title}
         </Typography>
-        <Typography>
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        Yosemite National Park is a national park spanning 747,956 acres (1,169.4 sq
-        mi; 3,025.2 km2) in the western Sierra Nevada of Central California.
-        </Typography>
+        {load ? <Loading /> : err ? <Typography> Somthing went wrong</Typography> : <Typography>{text}</Typography>}
       </div>
     </Card>
-  );
-};
+  )
+}
 
-export default TypographyCard;
+export default TypographyCard

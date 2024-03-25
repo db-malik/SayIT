@@ -3,9 +3,9 @@ import TextArea from 'components/textArea/TextArea'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-const TextSammury = () => {
+const TextTranslate = () => {
 
-  const textSummary = useSelector((state) => state.textSummarySlice.textSummary)
+  const textTranslation = useSelector((state) => state.textSummarySlice.textTranslate)
   const loading = useSelector((state) => state.loading)
   const error = useSelector((state) => state.error)
 
@@ -13,16 +13,16 @@ const TextSammury = () => {
   useEffect(() => {
     // Here you can perform any side effect when textSummary changes
     // For example, you can update the DOM or trigger any other action
-    console.log('textSummary changed:', textSummary)
-  }, [textSummary])
+    console.log('textSummary changed:', textTranslation)
+  }, [textTranslation])
 
 
   return (
     <div className="gridTextArea">
-      <TextArea action={'summarize'} />
-      <TypographyCard title={'Text Summary'} text={textSummary} load={loading} err={error} />
+      <TextArea action={'translate'} />
+      <TypographyCard title={'Text Translation'} text={textTranslation} load={loading} err={error} />
     </div>
   )
 }
 
-export default TextSammury
+export default TextTranslate
