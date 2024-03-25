@@ -1,7 +1,7 @@
 export const blogs = [
   {
     title: 'Unlocking the Potential of Natural Language Processing (NLP) in Everyday Life',
-    imgUrl: "./utils/assets/blog01.png",
+    imgUrl: "./assets/blog01.png",
     id: '154',
     text: "This post will take you a beginner's guide to Natural Language Processing. A language is a way we humans, communicate with each other. Each day we produce data from emails, SMS, tweets, etc. we must have methods to understand these type of data, just like we do for other types of data. We will learn some of the basic but important techniques in Natural Language Processing. In simple terms, Natural language processing (NLP) is the ability of computers to understand human speech as it is spoken. NLP helps to analyze, understand, and derive meaning from human language in a smart and useful way. NLP algorithms are machine learning algorithms based. NLP learns by analyzing a set of examples (i.e. a large corpus, like a book, down to a collection of sentences), and making a statistical inference, instead of coding large sets of rules. We can organize the massive chunks of text data and solve a wide...",
     full_text: [
@@ -43,24 +43,24 @@ export const blogs = [
   },
   {
     title: 'Speech Recognition',
-    imgUrl: "../../../utils/assets/blog02.png",
+    imgUrl: "../../../assets/blog02.png",
     id: '236'
   },
   {
     title: 'Text Summarisation Using Deep Learning',
-    imgUrl: "../../../utils/assets/blog03.png",
+    imgUrl: "../../../assets/blog03.png",
     id: '5158',
     text: 'The amount of data produced every day is mind-boggling. To put things in perspective, in the last two years alone 90% of the world’s data is generated. Every minute, more than 120 professionals join LinkedIn, and the favourite search engine of the world processes 40,000 searches every minute...',
   },
   {
     title: 'Speech to Text Conversion',
-    imgUrl: "../../../utils/assets/blog04.png",
+    imgUrl: "../../../assets/blog04.png",
     id: '514854',
     text: 'Speech is the most common means of communication and the majority of the population in the world relies on speech to communicate with one another. Speech recognition system...',
   },
   {
     title: 'Coding In Deep Learning',
-    imgUrl: "../../../utils/assets/blog05.png",
+    imgUrl: "../../../assets/blog05.png",
     id: '45711',
     text: 'Intuition based series of articles about Neural Networks dedicated to programmers who want to understand basic math behind the code and non-programmers who want to know how to turn math into code...',
   },
