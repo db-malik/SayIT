@@ -1,8 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
-import Search from './Search'
-import GridFonctionalities from './GridFonctionalities'
-import { Routes, Route, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import TitleUser from './TitleUser'
 
 const Profile = () => {
@@ -14,6 +12,7 @@ const Profile = () => {
           <TitleUser />
         </div>
         <div className="outletContainer">
+          
           <Outlet />
         </div>
       </div>

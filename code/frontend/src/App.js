@@ -13,8 +13,8 @@ import ProfilePage from 'views/profilePage/ProfilePage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import GridFonctionalities from "components/profile/GridFonctionalities"
 import TextSammury from "components/profile/fonctionalities/TextSammury"
-import ChatWithAI from "components/profile/fonctionalities/ChatWithAI"
 import Chatbot from "components/profile/fonctionalities/chat/Chatbot/Chatbot"
+import TextTranslate from "components/profile/fonctionalities/TextTranslate"
 
 const App = () => {
   return (
@@ -26,6 +26,7 @@ const App = () => {
           <Route exact path="/profile/fonctionalities" element={<GridFonctionalities />} />
           <Route path="/profile/text_sammury" element={<TextSammury />} />
           <Route path="/profile/chat_with_ai" element={<Chatbot />} />
+          <Route path="/profile/text_translate" element={<TextTranslate />} />
         </Route>
         <Route path="/MeetingSummariser" element={<MeetingSummariser />} />
         <Route path="/TranscriptSummariser" element={<TranscriptSummariser />} />

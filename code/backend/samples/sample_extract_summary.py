@@ -1,3 +1,10 @@
+
+from dotenv import load_dotenv
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
+import os
+
+
 """
 FILE: sample_extract_summary.py
 
@@ -14,12 +21,9 @@ USAGE:
 """
 
 
-def sample_extractive_summarization(document):
+def sample_extractive_summarization(document):  
+    print(document)
     # [START extract_summary]
-    import os
-    from dotenv import load_dotenv
-    from azure.core.credentials import AzureKeyCredential
-    from azure.ai.textanalytics import TextAnalyticsClient
 
     # Load environment variables from .env file
     load_dotenv()

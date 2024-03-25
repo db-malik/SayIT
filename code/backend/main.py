@@ -5,6 +5,7 @@ import logging as log
 import uvicorn
 from fastapi.exceptions import HTTPException
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 
 from routes.admin_router import admin_router
@@ -17,6 +18,25 @@ from database.db_config import get_database_connection
 # Create a FastAPI app
 app = FastAPI()
 get_database_connection()
+
+
+# Configure CORS settings
+origins = [
+    "http://localhost",
+    "http://localhost:3000",  # Replace with your frontend URL
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],  # Include OPTIONS method
+    allow_headers=["*"],
+)
+
+
+
+
 # Middleware: Add authentication middleware here
 # async def auth_middleware(request: Request, call_next):
 #     # Perform authentication logic here
