@@ -10,6 +10,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.text import MIMEText
+import textwrap
 
 openai.api_key = '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'
 
@@ -43,17 +44,32 @@ def transcribe_video(video_path):
             gc.collect()
             os.remove(temp_video_path)
 
-    return "S'il vous plaît, aidez-moi à résumer le paragraphe suivant: " + text
+    return '''Veuillez me faire un bref résumé du procès-verbal de la réunion,
+            dites-moi de quoi ils ont parlé et quelques points clés. Plusieurs membres étaient présents à cette réunion et, comme la réunion est relativement longue, 
+            je vous l'enverrai en plusieurs parties. Voici le procès-verbal de la réunion :''' + text + '''Ce qui précède est l'enregistrement complet de la discussion de la réunion. Aidez-moi à résumer ce dont ils ont parlé?'''
+
 
 def summarize_text_with_chatgpt(text):
-    response = openai.completions.create(
-        model="gpt-3.5-turbo-instruct",
-        prompt=text,
-        temperature=0.6,
-        max_tokens=2000
-    )
-    summary = response.choices[0].text.strip()
-    return summary
+    MAX_TOKENS = 128000
+    summaries = []
+
+    # Split the text into chunks that are less than MAX_TOKENS
+    chunks = textwrap.wrap(text, MAX_TOKENS)
+
+    for chunk in chunks:
+        response = openai.chat.completions.create(
+            model="gpt-4-0125-preview",
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": chunk}
+            ],
+            temperature=0.5,
+            max_tokens=2000
+        )
+        summary = response.choices[0].message.content
+        summaries.append(summary)
+
+    return ' '.join(summaries)
 
 def save_summary_as_word(summary, filename):
     doc = Document()
