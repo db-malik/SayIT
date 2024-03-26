@@ -12,6 +12,7 @@ from scripts.video_transcription.scription import transcribe_video
 from scripts.video_transcription.scription import summarize_text_with_chatgpt
 from scripts.video_transcription.scription import save_summary_as_word
 from scripts.video_transcription.scription import email
+from scripts.video_transcription.scription import convert_file  
 from typing import List
 from fastapi import UploadFile, File, Body
 import datetime
@@ -41,7 +42,7 @@ async def resume(yaml_file: UploadFile = File(...), address_email: List[str] = B
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=ext)
     with open(temp_file.name, 'wb+') as out_file:
         shutil.copyfileobj(yaml_file.file, out_file)
-    yaml_path = temp_file.name
+    yaml_path = convert_file(temp_file.name)
     if not os.path.exists(yaml_path):
         return {"error": f"The file {yaml_path} does not exist."}
     if yaml_path.endswith('.yaml'):

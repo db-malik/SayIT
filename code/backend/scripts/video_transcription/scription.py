@@ -11,8 +11,34 @@ from email.mime.base import MIMEBase
 from email import encoders
 from email.mime.text import MIMEText
 import textwrap
+import yaml
 
 openai.api_key = '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'
+
+
+
+def convert_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        lines = file.readlines()
+
+    data = []
+    item = {}
+
+    for line in lines:
+        if line.strip() == '----':
+            data.append(item)
+            item = {}
+        else:
+            key, value = line.strip().split(': ', 1)
+            item[key] = value
+
+    # Append the last item
+    if item:
+        data.append(item)
+
+    with open(file_path, 'w', encoding='utf-8') as file:
+        yaml.dump(data, file, allow_unicode=True)
+
 
 def transcribe_video(video_path):
     video = VideoFileClip(video_path)
