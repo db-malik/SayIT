@@ -63,11 +63,11 @@ async def resume(yaml_file: UploadFile = File(...), address_email: List[str] = B
         timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
         text_filename = os.path.basename(yaml_path).replace('.yaml', f'_{timestamp}.{file_type}')
         save_summary_as_word(summary, os.path.join(text_dir, text_filename))
-        #email(os.path.join(text_dir, text_filename), address_email)
-        return {"result": f"Summary saved as {text_filename} in {text_dir}"}
+        text_path=os.path.join(text_dir, text_filename)
+        email(text_path, address_email)
+        return {"result": f"Summary saved as {text_filename} in {text_path},to {address_email}"}
     else:
         return ("The provided file is not a yaml file.")
-
 
 
 
