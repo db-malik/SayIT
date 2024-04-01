@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 import textwrap
 import yaml
 
-openai.api_key = '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'
+openai.api_key = ''
 
 
 
@@ -38,6 +38,7 @@ def convert_file(file_path):
 
     with open(file_path, 'w', encoding='utf-8') as file:
         yaml.dump(data, file, allow_unicode=True)
+    return file_path
 
 
 def transcribe_video(video_path):
@@ -70,9 +71,7 @@ def transcribe_video(video_path):
             gc.collect()
             os.remove(temp_video_path)
 
-    return '''Veuillez me faire un bref résumé du procès-verbal de la réunion,
-            dites-moi de quoi ils ont parlé et quelques points clés. Plusieurs membres étaient présents à cette réunion et, comme la réunion est relativement longue, 
-            je vous l'enverrai en plusieurs parties. Voici le procès-verbal de la réunion :''' + text + '''Ce qui précède est l'enregistrement complet de la discussion de la réunion. Aidez-moi à résumer ce dont ils ont parlé?'''
+    return text
 
 
 def summarize_text_with_chatgpt(text):
@@ -86,7 +85,7 @@ def summarize_text_with_chatgpt(text):
         response = openai.chat.completions.create(
             model="gpt-4-0125-preview",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "system", "content": "You are an assistant and next you are passed some snippets of the meeting. You need to summarize the meeting."},
                 {"role": "user", "content": chunk}
             ],
             temperature=0.5,

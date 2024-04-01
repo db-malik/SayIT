@@ -102,7 +102,7 @@ async def chat_with_gpt_3_5_turbo(message: str):
     # client = OpenAI()
     # if you saved the key under a different environment variable name, you can do something like:
     client = OpenAI(
-        api_key="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",
+        api_key="",
     )
     
     try:
