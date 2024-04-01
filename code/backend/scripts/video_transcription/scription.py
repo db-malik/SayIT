@@ -71,9 +71,7 @@ def transcribe_video(video_path):
             gc.collect()
             os.remove(temp_video_path)
 
-    return '''Veuillez me faire un bref résumé du procès-verbal de la réunion,
-            dites-moi de quoi ils ont parlé et quelques points clés. Plusieurs membres étaient présents à cette réunion et, comme la réunion est relativement longue, 
-            je vous l'enverrai en plusieurs parties. Voici le procès-verbal de la réunion :''' + text + '''Ce qui précède est l'enregistrement complet de la discussion de la réunion. Aidez-moi à résumer ce dont ils ont parlé?'''
+    return text
 
 
 def summarize_text_with_chatgpt(text):
