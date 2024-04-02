@@ -26,6 +26,10 @@ const Sidebar = () => {
         </button>
       </div>
       <div className="buttonContainer">
+      <button onClick={() => goTo('/profile/fonctionalities')}>
+          <Plus weight="bold" size={20} />
+          Fonctionalities
+        </button>
         <button onClick={() => goTo('/profile/chat_with_ai')}>
           <Chat weight="bold" size={20} />
           Chat with IA
@@ -34,16 +38,16 @@ const Sidebar = () => {
           <Summarize weight="bold" size={20} />
           Summarize Information
         </button>
-        <button>
+        <button onClick={() => goTo('/profile/audio_transcript')} >
           <RiMapPin3Fill weight="bold" size={20} />
           Transcript Audio
         </button>
-        <button>
-          <Plus weight="bold" size={20} />
+        <button  onClick={() => goTo('/profile/video_transcript')} weight="bold" size={20}>
+          <RiMapPin3Fill />
           Transcript Video
         </button>
         <button onClick={() => goTo('/profile/text_translate')}>
-          <Plus   weight="bold" size={20} />
+          <Summarize   weight="bold" size={20} />
           Translate text
         </button>
       </div>

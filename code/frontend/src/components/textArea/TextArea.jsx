@@ -13,7 +13,8 @@ import FormatItalic from '@mui/icons-material/FormatItalic'
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
 import Check from '@mui/icons-material/Check'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchTextSummary } from 'sevices/services'
+import { fetchTextSummary, fetchTextTranslation } from 'sevices/services'
+import Selector from "components/selector/Selector"
 
 const TextArea = ({action}) => {
   const [italic, setItalic] = useState(false)
@@ -29,7 +30,7 @@ const TextArea = ({action}) => {
         dispatch(fetchTextSummary(textData))
         break
       case 'translate':
-        // Add your code here
+        dispatch(fetchTextTranslation(textData))
         break
       default:
     }
@@ -97,7 +98,7 @@ const TextArea = ({action}) => {
               aria-pressed={italic}
               onClick={() => setItalic((bool) => !bool)}
             >
-              <FormatItalic />
+              <Selector/>
             </IconButton>
             <Button disabled={loading} onClick={()=>sendText(action)} sx={{ ml: 'auto' }}>
               Send

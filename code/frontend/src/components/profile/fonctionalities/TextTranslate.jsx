@@ -5,22 +5,22 @@ import { useSelector } from 'react-redux'
 
 const TextTranslate = () => {
 
-  const textTranslation = useSelector((state) => state.textSummarySlice.textTranslate)
-  const loading = useSelector((state) => state.loading)
-  const error = useSelector((state) => state.error)
+  const textTranslated = useSelector((state) => state.textTranslation.textTranslated)
+  const loading = useSelector((state) => state.textTranslation.loading)
+  const error = useSelector((state) => state.textTranslation.error)
 
   // Use useEffect to perform side effect when textSummary changes
   useEffect(() => {
     // Here you can perform any side effect when textSummary changes
     // For example, you can update the DOM or trigger any other action
-    console.log('textSummary changed:', textTranslation)
-  }, [textTranslation])
+    console.log('textSummary changed:', textTranslated)
+  }, [textTranslated])
 
 
   return (
     <div className="gridTextArea">
       <TextArea action={'translate'} />
-      <TypographyCard title={'Text Translation'} text={textTranslation} load={loading} err={error} />
+      <TypographyCard title={'Text Translation'} text={textTranslated.text} load={loading} err={error} />
     </div>
   )
 }
