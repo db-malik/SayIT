@@ -1,5 +1,5 @@
 # routes/model_ml_router.py
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from openai import OpenAI
@@ -21,8 +21,11 @@ import shutil
 import tempfile
 
 from samples.sample_extract_summary import sample_extractive_summarization
+from samples.sample_text_translation import sample_text_translation
+from samples.sample_get_supported_languges import get_supported_languages
 from dotenv import load_dotenv
 import os
+from samples.sample_text_translation import sample_text_translation
 
 
 load_dotenv()
@@ -32,8 +35,8 @@ load_dotenv()
 
 model_ml_router = APIRouter()
 
+# ----------------------------------------------------------
 # route to summarize a text
-
 @model_ml_router.post("/resume")
 async def resume(yaml_file: UploadFile = File(...), address_email: List[str] = Body(...)):
     current_dir = os.getcwd()
@@ -69,10 +72,12 @@ async def resume(yaml_file: UploadFile = File(...), address_email: List[str] = B
         return {"result": f"Summary saved as {text_filename} in {text_path},to {address_email}"}
     else:
         return ("The provided file is not a yaml file.")
+# ----------------------------------------------------------
 
 
-
-@model_ml_router.post("/textsummarisation")
+# ----------------------------------------------------------
+# route to text summarisation
+@model_ml_router.post("/text_summarisation")
 async def text_summarisation(text: str):
     # print(text)
     try:
@@ -91,10 +96,62 @@ async def text_summarisation(text: str):
     except Exception as e:
         # If an error occurs, raise an HTTPException
         raise HTTPException(status_code=500, detail=str(e))
+# ----------------------------------------------------------
+
+
+    
+# ----------------------------------------------------------
+# route to translate a text
+@model_ml_router.post("/text_translation")
+async def text_translation( 
+    document: str = Query(..., description="The text to be translated"),
+    fromlanguage: str = Query(..., description="The source language of the text"),
+    tolanguages: list = Query(..., description="The target languages to translate the text to"),):
+    try:
+        
+        print("document", document)
+        print("fromlanguage", fromlanguage)
+        print("tolanguages", tolanguages)
+        
+        # Call the summarization function with the array of sentences
+        translated_text = sample_text_translation(document, fromlanguage, tolanguages)
+
+        # Print the summary text for debugging
+        # print(summary_text)
+
+        return {"result": translated_text}
+    except Exception as e:
+        # If an error occurs, raise an HTTPException
+        raise HTTPException(status_code=500, detail=str(e))
+# ----------------------------------------------------------
 
 
 
-# chat with GPT-3.5 turbo
+# ----------------------------------------------------------
+# route to transcribe a video
+@model_ml_router.post("/video_transcription")
+async def video_transcription(document: str, fromlanguage: str, tolanguages: List[str]):
+    # print(text)
+    try:
+        
+        # Call the summarization function with the array of sentences
+        # summary_text = sample_text_translation(data)
+
+        # Print the summary text for debugging
+        # print(summary_text)
+
+        return {"result": "summary_text"}
+    except Exception as e:
+        # If an error occurs, raise an HTTPException
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    
+    
+# ----------------------------------------------------------
+
+
+# ----------------------------------------------------------
+# route to chat with GPT-3.5 turbo
 @model_ml_router.post("/chat")
 async def chat_with_gpt_3_5_turbo(message: str):
     
@@ -117,4 +174,13 @@ async def chat_with_gpt_3_5_turbo(message: str):
         return {"result": completion}
     except Exception as e:
         # If an error occurs, raise an HTTPException
+        raise HTTPException(status_code=500, detail=str(e))
+# ----------------------------------------------------------
+
+
+@model_ml_router.get("/supported_languages")
+async def supported_languages():
+    try:
+        return get_supported_languages()
+    except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

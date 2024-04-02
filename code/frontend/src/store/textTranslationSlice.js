@@ -2,7 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  textTranslation: "This is a text translation",
+  textTranslated: "This is a text translation",
+  languages: [],
   loading: false,
   error: null,
 };
@@ -11,8 +12,8 @@ const textTranslationSlice = createSlice({
   name: 'example',
   initialState,
   reducers: {
-    setTextTranslation: (state, action) => {
-      state.textTranslation = action.payload;
+    setTextTranslated: (state, action) => {
+      state.textTranslated = action.payload;
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
@@ -23,6 +24,6 @@ const textTranslationSlice = createSlice({
   },
 });
 
-export const { setTextTranslation, setLoading, setError } = textTranslationSlice.actions;
+export const { setTextTranslated, setLoading, setError } = textTranslationSlice.actions;
 
 export default textTranslationSlice.reducer;

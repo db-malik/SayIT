@@ -27,6 +27,8 @@ const App = () => {
           <Route path="/profile/text_sammury" element={<TextSammury />} />
           <Route path="/profile/chat_with_ai" element={<Chatbot />} />
           <Route path="/profile/text_translate" element={<TextTranslate />} />
+          <Route path="/profile/audio_transcript" element={<TextTranslate />} />
+          <Route path="/profile/video_transcript" element={<TextTranslate />} />
         </Route>
         <Route path="/MeetingSummariser" element={<MeetingSummariser />} />
         <Route path="/TranscriptSummariser" element={<TranscriptSummariser />} />
