@@ -17,7 +17,7 @@ from database.db_config import get_database_connection
 
 # Create a FastAPI app
 app = FastAPI()
-get_database_connection()
+#get_database_connection()
 
 
 # Configure CORS settings
