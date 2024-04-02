@@ -12,7 +12,7 @@ credentiels/
 *.sqlite
 
 # Environment variables
-.env
+# .env
 
 # Virtual environments
 venv/
