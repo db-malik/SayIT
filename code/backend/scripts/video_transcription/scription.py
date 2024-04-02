@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 import textwrap
 import yaml
 
-openai.api_key = ''
+openai.api_key = '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'
 
 
 
@@ -107,10 +107,7 @@ def email(doc, address_emails):
     #Veuillez remplacer le nom d'utilisateur par votre propre adresse e-mail
     
     mail_username = "yezhanyz@gmail.com"
-    
-    #Veuillez remplacer le mot de passe par votre propre mot de passe
-    
-    mail_password = ""
+    mail_password = "kxyz mcuk qwln nerd"
 
     for address_email in address_emails:
         msg = MIMEMultipart()
