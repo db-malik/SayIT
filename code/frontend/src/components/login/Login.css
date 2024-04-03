@@ -113,6 +113,7 @@ input[type="radio"]{
   width: 100%;
   margin-top: 20px;
   border-bottom: 2px solid #adadad;
+  color: #07417b;
 }
 .form-details form .field input{
   height: 100%;
@@ -124,9 +125,11 @@ input[type="radio"]{
   border-bottom-width: 2px;
   font-size: 17px;
   transition: all 0.3s ease;
+  color: #07417b;
+
 }
 .form-details form .field input::placeholder{
-  color: #999;
+  color: #211a1a;
   transition: all 0.3s ease;
 }
 form .field input:focus::placeholder{

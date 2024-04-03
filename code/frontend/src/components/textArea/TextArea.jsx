@@ -9,19 +9,23 @@ import Menu from '@mui/joy/Menu'
 import MenuItem from '@mui/joy/MenuItem'
 import ListItemDecorator from '@mui/joy/ListItemDecorator'
 import FormatBold from '@mui/icons-material/FormatBold'
-import FormatItalic from '@mui/icons-material/FormatItalic'
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown'
 import Check from '@mui/icons-material/Check'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchTextSummary, fetchTextTranslation } from 'sevices/services'
-import Selector from "components/selector/Selector"
+import Selector from 'components/selector/Selector'
 
-const TextArea = ({action}) => {
+const TextArea = ({ action, supportedLanguges=[""] }) => {
   const [italic, setItalic] = useState(false)
   const [fontWeight, setFontWeight] = useState('normal')
   const [anchorEl, setAnchorEl] = useState(null)
   const [textData, setTextData] = useState('')
   const loading = useSelector((state) => state.loading)
+
+  const translateFromLanguges = useSelector((state) => state.textTranslation.translateFromLanguges)
+  const translateToLanguges = useSelector((state) => state.textTranslation.translateToLanguges)
+
+
   const dispatch = useDispatch()
 
   const sendText = (action) => {
@@ -30,7 +34,7 @@ const TextArea = ({action}) => {
         dispatch(fetchTextSummary(textData))
         break
       case 'translate':
-        dispatch(fetchTextTranslation(textData))
+        dispatch(fetchTextTranslation(textData, translateToLanguges,  translateFromLanguges))
         break
       default:
     }
@@ -98,9 +102,15 @@ const TextArea = ({action}) => {
               aria-pressed={italic}
               onClick={() => setItalic((bool) => !bool)}
             >
-              <Selector/>
+              {action === 'translate' ? 
+              <>
+
+
+              <Selector data={supportedLanguges} /> 
+                 
+              </> : null }
             </IconButton>
-            <Button disabled={loading} onClick={()=>sendText(action)} sx={{ ml: 'auto' }}>
+            <Button disabled={loading} onClick={() => sendText(action)} sx={{ ml: 'auto' }}>
               Send
             </Button>
           </Box>

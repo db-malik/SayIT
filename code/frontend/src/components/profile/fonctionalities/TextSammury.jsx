@@ -8,6 +8,8 @@ const TextSammury = () => {
   const loading = useSelector((state) => state.textSummarySlice.loading)
   const error = useSelector((state) => state.textSummarySlice.error)
 
+ 
+
   // Use useEffect to perform side effect when textSummary changes
   useEffect(() => {
     // Here you can perform any side effect when textSummary changes

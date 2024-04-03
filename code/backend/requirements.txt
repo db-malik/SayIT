@@ -25,3 +25,6 @@ python-dotenv
 # routes requirement
 bcrypt
 PyJWT
+
+# azure requirement
+azure-cognitiveservices-speech=1.36.0

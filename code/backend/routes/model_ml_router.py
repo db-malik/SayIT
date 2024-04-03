@@ -19,10 +19,12 @@ import datetime
 import yaml
 import shutil
 import tempfile
+from tempfile import NamedTemporaryFile
 
 from samples.sample_extract_summary import sample_extractive_summarization
 from samples.sample_text_translation import sample_text_translation
 from samples.sample_get_supported_languges import get_supported_languages
+from samples.sample_video_transcription import sample_video_transcription, video_to_audio, recognize_from_microphone, get_text
 from dotenv import load_dotenv
 import os
 from samples.sample_text_translation import sample_text_translation
@@ -129,21 +131,21 @@ async def text_translation(
 
 # ----------------------------------------------------------
 # route to transcribe a video
-@model_ml_router.post("/video_transcription")
-async def video_transcription(document: str, fromlanguage: str, tolanguages: List[str]):
-    # print(text)
-    try:
+# @model_ml_router.post("/video_transcription")
+# async def video_transcription(document: str, fromlanguage: str, tolanguages: List[str]):
+#     # print(text)
+#     try:
         
-        # Call the summarization function with the array of sentences
-        # summary_text = sample_text_translation(data)
+#         # Call the summarization function with the array of sentences
+#         # summary_text = sample_text_translation(data)
 
-        # Print the summary text for debugging
-        # print(summary_text)
+#         # Print the summary text for debugging
+#         # print(summary_text)
 
-        return {"result": "summary_text"}
-    except Exception as e:
-        # If an error occurs, raise an HTTPException
-        raise HTTPException(status_code=500, detail=str(e))
+#         return {"result": "summary_text"}
+#     except Exception as e:
+#         # If an error occurs, raise an HTTPException
+#         raise HTTPException(status_code=500, detail=str(e))
     
     
     
@@ -177,10 +179,36 @@ async def chat_with_gpt_3_5_turbo(message: str):
         raise HTTPException(status_code=500, detail=str(e))
 # ----------------------------------------------------------
 
-
+# ----------------------------------------------------------
 @model_ml_router.get("/supported_languages")
 async def supported_languages():
     try:
         return get_supported_languages()
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+    # ----------------------------------------------------------
+    
+    
+# ----------------------------------------------------------
+@model_ml_router.post("/video_transcription")
+async def video_transcription():
+    try:
+        # Check if the uploaded file is an MP4 video
+        # if video_file.filename.endswith('.mp4'):
+        #     # Save the uploaded video to a temporary file
+        #     with NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file:
+        #         shutil.copyfileobj(video_file.file, temp_file)
+
+        #     # Call the video transcription function with the temporary file path
+        #     video_to_audio(temp_file.name)
+
+        #     # Remove the temporary file after processing
+        #     os.remove(temp_file.name)
+            
+            
+        #     transcription_result = recognize_from_microphone()
+            text = get_text()
+            return {"result": text}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    # ----------------------------------------------------------
