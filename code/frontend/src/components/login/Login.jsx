@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './Login.css' // Import your CSS file
 // import { userService } from '../../services/userServices'
+import {  useNavigate } from 'react-router-dom';
 
 function LoginForm() {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
   const [registerData, setRegisterData] = useState({ username: '', email: '', password: '', confPassword: '' })
-
+  const navigate = useNavigate();
   // Handle changes in login form input fields
   const handleLoginChange = (e) => {
     const { name, value } = e.target
@@ -18,19 +19,7 @@ function LoginForm() {
   // Handle login form submission
   const handleLoginSubmit = async (e) => {
     e.preventDefault()
-    console.log('Login Data:', loginData) // Send login data to backend or perform login logic
-
-    // Redirect to /profile
-    window.location.href = '/profile';
-
-    // try {
-    //   await userService.login(loginData.email, loginData.password)
-    //   console.log('User registered successfully')
-    //   // Redirect or show success message
-    // } catch (error) {
-    //   console.error('Error registering user:', error)
-    //   // Handle error
-    // }
+    navigate('/profile/fonctionalities');
   }
 
   // Handle register form submission
@@ -60,6 +49,9 @@ function LoginForm() {
     const loginText = document.querySelector('.header .login')
     loginForm.style.marginLeft = '0%'
     loginText.style.marginLeft = '0%'
+    
+
+
   }
 
   const handleSignupLinkClick = (e) => {
@@ -124,7 +116,7 @@ function LoginForm() {
               <input type="email" name="email" value={registerData.email} onChange={handleRegisterChange} placeholder="Email Address" required />
             </div>
             <div className="field">
-              <input type="password" name="password" value={registerData.password} onChange={handleRegisterChange} placeholder="Password" required />
+              <input style={{color: "gray"}} type="password" name="password" value={registerData.password} onChange={handleRegisterChange} placeholder="Password" required />
             </div>
             <div className="field">
               <input

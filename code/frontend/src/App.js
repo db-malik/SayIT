@@ -15,6 +15,7 @@ import GridFonctionalities from "components/profile/GridFonctionalities"
 import TextSammury from "components/profile/fonctionalities/TextSammury"
 import Chatbot from "components/profile/fonctionalities/chat/Chatbot/Chatbot"
 import TextTranslate from "components/profile/fonctionalities/TextTranslate"
+import TranscriptVideo from "components/profile/fonctionalities/transcriptVideo"
 
 const App = () => {
   return (
@@ -27,8 +28,8 @@ const App = () => {
           <Route path="/profile/text_sammury" element={<TextSammury />} />
           <Route path="/profile/chat_with_ai" element={<Chatbot />} />
           <Route path="/profile/text_translate" element={<TextTranslate />} />
-          <Route path="/profile/audio_transcript" element={<TextTranslate />} />
-          <Route path="/profile/video_transcript" element={<TextTranslate />} />
+          {/* <Route path="/profile/audio_transcript" element={<TextTranslate />} /> */}
+          <Route path="/profile/video_transcript" element={<TranscriptVideo />} />
         </Route>
         <Route path="/MeetingSummariser" element={<MeetingSummariser />} />
         <Route path="/TranscriptSummariser" element={<TranscriptSummariser />} />

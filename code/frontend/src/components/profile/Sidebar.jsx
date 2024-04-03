@@ -38,10 +38,10 @@ const Sidebar = () => {
           <Summarize weight="bold" size={20} />
           Summarize Information
         </button>
-        <button onClick={() => goTo('/profile/audio_transcript')} >
+        {/* <button onClick={() => goTo('/profile/audio_transcript')} >
           <RiMapPin3Fill weight="bold" size={20} />
           Transcript Audio
-        </button>
+        </button> */}
         <button  onClick={() => goTo('/profile/video_transcript')} weight="bold" size={20}>
           <RiMapPin3Fill />
           Transcript Video
